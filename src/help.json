@@ -1,24 +1,24 @@
 {
-  "title": "Super Boum",
+  "title": "Super Boom",
   "children": [
     {
       "title": "Overview",
       "lines": [
         "Master bus destructor &",
         "harmonic sculptor inspired",
-        "by the OTO Boum hardware.",
+        "by analog warming hardware.",
         "",
         "Signal chain: Input Gain,",
         "Compressor, 8-Band Filter,",
         "Distortion, Preamp (10",
         "models), Tape Stage, Output.",
         "",
-        "4 pages: Boum, Skulpt,",
+        "4 pages: Boom, Skulpt,",
         "Pre&Comp, Seal."
       ]
     },
     {
-      "title": "Boum Page",
+      "title": "Boom Page",
       "lines": [
         "Input: input gain (0.5-4x)",
         "Comp: compressor amount",

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build Super Boum module for Move Anything (ARM64)
+# Build Super Boom module for Move Anything (ARM64)
 #
 # Automatically uses Docker for cross-compilation if needed.
 # Set CROSS_PREFIX to skip Docker (e.g., for native ARM builds).
@@ -11,7 +11,7 @@ IMAGE_NAME="move-anything-builder"
 
 # Check if we need Docker
 if [ -z "$CROSS_PREFIX" ] && [ ! -f "/.dockerenv" ]; then
-    echo "=== Super Boum Module Build (via Docker) ==="
+    echo "=== Super Boom Module Build (via Docker) ==="
     echo ""
 
     # Build Docker image if needed
@@ -40,12 +40,12 @@ CROSS_PREFIX="${CROSS_PREFIX:-aarch64-linux-gnu-}"
 
 cd "$REPO_ROOT"
 
-echo "=== Building Super Boum Module ==="
+echo "=== Building Super Boom Module ==="
 echo "Cross prefix: $CROSS_PREFIX"
 
 # Create build directories
 mkdir -p build
-mkdir -p dist/superboum
+mkdir -p dist/superboom
 
 # Compile DSP plugin (with aggressive optimizations for CM4)
 echo "Compiling DSP plugin..."
@@ -54,28 +54,28 @@ ${CROSS_PREFIX}gcc -Ofast -shared -fPIC \
     -march=armv8-a -mtune=cortex-a72 \
     -fomit-frame-pointer -fno-stack-protector \
     -DNDEBUG \
-    src/dsp/superboum.c \
-    -o build/superboum.so \
+    src/dsp/superboom.c \
+    -o build/superboom.so \
     -Isrc/dsp \
     -lm
 
 # Copy files to dist (use cat to avoid ExtFS deallocation issues with Docker)
 echo "Packaging..."
-cat src/module.json > dist/superboum/module.json
-[ -f src/help.json ] && cat src/help.json > dist/superboum/help.json
-[ -f src/ui_chain.js ] && cat src/ui_chain.js > dist/superboum/ui_chain.js
-cat build/superboum.so > dist/superboum/superboum.so
-chmod +x dist/superboum/superboum.so
+cat src/module.json > dist/superboom/module.json
+[ -f src/help.json ] && cat src/help.json > dist/superboom/help.json
+[ -f src/ui_chain.js ] && cat src/ui_chain.js > dist/superboom/ui_chain.js
+cat build/superboom.so > dist/superboom/superboom.so
+chmod +x dist/superboom/superboom.so
 
 # Create tarball for release
 cd dist
-tar -czvf super-boum-module.tar.gz superboum/
+tar -czvf super-boom-module.tar.gz superboom/
 cd ..
 
 echo ""
 echo "=== Build Complete ==="
-echo "Output: dist/superboum/"
-echo "Tarball: dist/super-boum-module.tar.gz"
+echo "Output: dist/superboom/"
+echo "Tarball: dist/super-boom-module.tar.gz"
 echo ""
 echo "To install on Move:"
 echo "  ./scripts/install.sh"

@@ -1,11 +1,11 @@
 {
-    "id": "superboum",
-    "name": "Super Boum",
-    "version": "1.2.0",
-    "abbrev": "BOUM",
-    "description": "Master Bus Destructor & Harmonic Sculptor. OTO Boum-inspired distortion with 8-band filterbank, 10 preamp models, vocoder mode, and tape stage.",
+    "id": "superboom",
+    "name": "Super Boom",
+    "version": "1.3.0",
+    "abbrev": "BOOM",
+    "description": "Master Bus Destructor & Harmonic Sculptor. Analog warming unit-inspired distortion with 8-band filterbank, 10 preamp models, vocoder mode, and tape stage.",
     "author": "fillioning",
-    "dsp": "superboum.so",
+    "dsp": "superboom.so",
     "api_version": 2,
     "capabilities": {
         "chainable": true,
@@ -53,17 +53,17 @@
             "modes": null,
             "levels": {
                 "root": {
-                    "name": "Super Boum",
+                    "name": "Super Boom",
                     "knobs": ["inputGain", "compAmount", "drive", "driveMix", "distMode", "shift", "mix", "output"],
                     "params": [
-                        {"level": "BOUM", "label": "Boum"},
+                        {"level": "BOOM", "label": "Boom"},
                         {"level": "SKULPT", "label": "Skulpt"},
                         {"level": "PRECOMP", "label": "Pre&Comp"},
                         {"level": "SEAL", "label": "Seal"}
                     ]
                 },
-                "BOUM": {
-                    "label": "Boum",
+                "BOOM": {
+                    "label": "Boom",
                     "knobs": ["inputGain", "compAmount", "drive", "driveMix", "distMode", "shift", "mix", "output"],
                     "params": ["inputGain", "compAmount", "drive", "driveMix", "distMode", "shift", "mix", "output"]
                 },

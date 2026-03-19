@@ -1,5 +1,5 @@
 /*
- * superboum.c — Super Boum for Ableton Move
+ * superboom.c — Super Boom for Ableton Move
  *
  * Master Bus Destructor & Harmonic Sculptor.
  * Sourced from OTO hardware specs and Airwindows-style DSP primitives.
@@ -12,7 +12,7 @@
  *
  * Build:
  *   aarch64-linux-gnu-gcc -std=gnu11 -O3 -shared -fPIC \
- *       -I/home/flou/lore-move/host superboum.c -o superboum.so -lm
+ *       -I/home/flou/lore-move/host superboom.c -o superboom.so -lm
  */
 
 #include <stdint.h>
@@ -134,7 +134,7 @@ static const double gate_thresh[7] = {
 /* ═══════════════════════════════════════ Instance Struct ══ */
 
 typedef struct {
-    /* Page 1: BOUM */
+    /* Page 1: BOOM */
     float inputGain;   /* 0.5 - 4.0 */
     float compAmount;  /* 0.0 - 1.0 */
     float drive;       /* 1.0 - 20.0 */
@@ -194,11 +194,11 @@ typedef struct {
     double flutPhase2;
     double flutSmooth;  /* Smoothed flutter amount to prevent clicks */
     double hiCutSmooth; /* Smoothed HiCut freq to prevent clicks */
-} superboum_t;
+} superboom_t;
 
 /* ═══════════════════════════════════════════════════ PRNG ══ */
 
-static inline double sb_rand(superboum_t *s) {
+static inline double sb_rand(superboom_t *s) {
     s->rng = (214013u * s->rng + 2531011u);
     return ((double)((s->rng >> 16) & 0x7FFF) / 32768.0) * 2.0 - 1.0;
 }
@@ -228,7 +228,7 @@ static inline double console_sin(double x) {
 
 /* Single-sample preamp core (called at 2x rate) */
 static void apply_preamp_sample(double *l, double *r, int model,
-                                double grit, superboum_t *s) {
+                                double grit, superboom_t *s) {
     double noise = sb_rand(s) * grit * 0.04;
     /* TPDF dither for bit-crush models */
     double dither = (sb_rand(s) + sb_rand(s)) * 0.5;
@@ -310,7 +310,7 @@ static void apply_preamp_sample(double *l, double *r, int model,
 
 /* 2x oversampled preamp wrapper — gain-neutral */
 static void apply_preamp(double *L, double *R, int model, double grit,
-                         superboum_t *s) {
+                         superboom_t *s) {
     /* Measure input level */
     double inL = *L, inR = *R;
 
@@ -382,7 +382,7 @@ static inline double apply_tape(double x, double sat, double age,
 
 /* ═══════════════════════════════════════ Flutter ══ */
 
-static void apply_flutter(superboum_t *s, double *L, double *R,
+static void apply_flutter(superboom_t *s, double *L, double *R,
                           double amt) {
     /* Smooth the flutter amount to prevent clicks on parameter changes */
     double smoothCoeff = 0.9995;  /* ~100ms smoothing */
@@ -429,7 +429,7 @@ static void apply_flutter(superboum_t *s, double *L, double *R,
 /* ═══════════════════════════════════ Main Process Block ══ */
 
 static void process_block(void *inst, int16_t *audio_inout, int frames) {
-    superboum_t *s = (superboum_t *)inst;
+    superboom_t *s = (superboom_t *)inst;
     if (s->bypass > 0.5f) return;
 
     /* ── Mic input pointer (shared memory hardware input) ── */
@@ -637,10 +637,10 @@ static void process_block(void *inst, int16_t *audio_inout, int frames) {
 
 static void *create_instance(const char *module_dir, const char *config_json) {
     (void)module_dir; (void)config_json;
-    superboum_t *s = (superboum_t *)calloc(1, sizeof(superboum_t));
+    superboom_t *s = (superboom_t *)calloc(1, sizeof(superboom_t));
     if (!s) return NULL;
 
-    /* Defaults — Page 1: BOUM */
+    /* Defaults — Page 1: BOOM */
     s->inputGain = 1.0f;
     s->compAmount = 0.0f;
     s->drive = 1.0f;
@@ -734,10 +734,10 @@ static void set_enum(float *dst, const char *value, const char **opts,
     }
 
 static void set_param(void *inst, const char *key, const char *value) {
-    superboum_t *s = (superboum_t *)inst;
+    superboom_t *s = (superboom_t *)inst;
     if (!key || !value) return;
 
-    /* Page 1: BOUM */
+    /* Page 1: BOOM */
     SETFR("inputGain", inputGain, 0.5, 4.0)
     SETFR("compAmount", compAmount, 0.0, 1.0)
     SETFR("drive", drive, 1.0, 20.0)
@@ -795,14 +795,14 @@ static void set_param(void *inst, const char *key, const char *value) {
     } } while(0)
 
 static int get_param(void *inst, const char *key, char *buf, int buf_len) {
-    superboum_t *s = (superboum_t *)inst;
+    superboom_t *s = (superboom_t *)inst;
     if (!key) return -1;
 
     /* ── chain_params ── */
     if (strcmp(key, "chain_params") == 0) {
         static const char *cp =
         "["
-        /* Page 1: BOUM */
+        /* Page 1: BOOM */
         "{\"key\":\"inputGain\",\"name\":\"Input\",\"type\":\"float\","
           "\"min\":0.5,\"max\":4,\"default\":1,\"step\":0.01},"
         "{\"key\":\"compAmount\",\"name\":\"Comp\",\"type\":\"float\","
@@ -892,16 +892,16 @@ static int get_param(void *inst, const char *key, char *buf, int buf_len) {
         static const char *hier =
         "{\"modes\":null,"
         "\"levels\":{"
-          "\"root\":{\"name\":\"Super Boum\","
+          "\"root\":{\"name\":\"Super Boom\","
             "\"knobs\":[\"inputGain\",\"compAmount\",\"drive\",\"driveMix\","
               "\"distMode\",\"shift\",\"mix\",\"output\"],"
             "\"params\":["
-              "{\"level\":\"BOUM\",\"label\":\"Boum\"},"
+              "{\"level\":\"BOOM\",\"label\":\"Boom\"},"
               "{\"level\":\"SKULPT\",\"label\":\"Skulpt\"},"
               "{\"level\":\"PRECOMP\",\"label\":\"Pre&Comp\"},"
               "{\"level\":\"SEAL\",\"label\":\"Seal\"}"
             "]},"
-          "\"BOUM\":{\"label\":\"Boum\","
+          "\"BOOM\":{\"label\":\"Boom\","
             "\"knobs\":[\"inputGain\",\"compAmount\",\"drive\",\"driveMix\","
               "\"distMode\",\"shift\",\"mix\",\"output\"],"
             "\"params\":[\"inputGain\",\"compAmount\",\"drive\",\"driveMix\","
@@ -930,7 +930,7 @@ static int get_param(void *inst, const char *key, char *buf, int buf_len) {
 
     /* ── Individual params ── */
 
-    /* Page 1: BOUM */
+    /* Page 1: BOOM */
     GETP("inputGain", inputGain)
     GETP("compAmount", compAmount)
     GETP("drive", drive)

@@ -1,23 +1,23 @@
-This is the official Operation Manual for the **Super Boum**, custom-tailored for the **Ableton Move-Anything** framework.
+This is the official Operation Manual for the **Super Boom**, custom-tailored for the **Ableton Move-Anything** framework.
 
 ---
 
-# SUPER BOUM: User Manual
+# SUPER BOOM: User Manual
 
 **Device Type:** Master Bus Destructor & Harmonic Sculptor
 **Platform:** Ableton Move (Standalone)
 
 ## 1. Intent & Purpose
 
-The **Super Boum** is designed to be the final "warmth and grit" stage for your Ableton Move projects. While the Move is excellent for clean, digital production, the Super Boum provides the missing analog soul.
+The **Super Boom** is designed to be the final "warmth and grit" stage for your Ableton Move projects. While the Move is excellent for clean, digital production, the Super Boom provides the missing analog soul.
 
-It takes inspiration from the **OTO Boum** (for its aggressive compression and distortion) and the **Elektron Analog Heat** (for its filter-driven saturation). It is intended to live on your Master Bus to glue tracks together or on a Drum Group to turn thin samples into a heavy, pumping wall of sound.
+It takes inspiration from the **OTO Boom** (for its aggressive compression and distortion) and the **Elektron Analog Heat** (for its filter-driven saturation). It is intended to live on your Master Bus to glue tracks together or on a Drum Group to turn thin samples into a heavy, pumping wall of sound.
 
 ---
 
 ## 2. Parameter Layout (The 8-Encoder Pages)
 
-Since the Ableton Move features 8 physical encoders, the Super Boum is organized into **four distinct pages**. You can toggle between these using the Move’s navigation buttons.
+Since the Ableton Move features 8 physical encoders, the Super Boom is organized into **four distinct pages**. You can toggle between these using the Move’s navigation buttons.
 
 ### Page 1: THE CORE (Primary Performance)
 
@@ -91,7 +91,7 @@ Since the Ableton Move features 8 physical encoders, the Super Boum is organized
 
 ### The 1:-1 Negative Ratio (Encoder 1.2)
 
-When the **COMP** knob passes the 70% mark, the Super Boum enters "Negative" mode. In this state, any signal that exceeds the threshold is not just turned down—it is actually pushed *below* the threshold. This creates a violent, pumping "ducking" effect that breathes in time with your drums, similar to heavy sidechaining but much more aggressive.
+When the **COMP** knob passes the 70% mark, the Super Boom enters "Negative" mode. In this state, any signal that exceeds the threshold is not just turned down—it is actually pushed *below* the threshold. This creates a violent, pumping "ducking" effect that breathes in time with your drums, similar to heavy sidechaining but much more aggressive.
 
 ### The West Coast Flavor (Encoder 1.5, Mode 8)
 
@@ -99,7 +99,7 @@ This is the "Secret Sauce." Most EQs use octaves (doubling frequencies). The **W
 
 ### 2x Oversampling
 
-Because you are running this on the Move, aliasing can be an issue with high-drive settings. The Super Boum internally doubles the sample rate to ensure that the **Square** and **Fuzz** modes remain smooth and "analog" without digital foldback noise.
+Because you are running this on the Move, aliasing can be an issue with high-drive settings. The Super Boom internally doubles the sample rate to ensure that the **Square** and **Fuzz** modes remain smooth and "analog" without digital foldback noise.
 
 3. Detailed Parameter Breakdown (Continued)
 Page 1: THE CORE
@@ -280,7 +280,7 @@ The Preamp is the "front-end" of the device. It adds the initial noise floor and
 
     CONS_USA: Models an API-style console. Faster, punchier, and "brighter" than the British counterpart. Excellent for drums.
 
-    CONS_MODERN: A clean, wide-bandwidth solid-state preamp. Use this when you want the Super Boum's filters and distortion to do all the work without adding "old" character.
+    CONS_MODERN: A clean, wide-bandwidth solid-state preamp. Use this when you want the Super Boom's filters and distortion to do all the work without adding "old" character.
 
 7. Tape & Mastering Section Descriptions
 

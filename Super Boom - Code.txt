@@ -1,6 +1,6 @@
 /**
  * ==============================================================================
- * SUPER BOUM - THE DEFINITIVE MONSTER (Move-Anything Framework Edition)
+ * SUPER BOOM - THE DEFINITIVE MONSTER (Move-Anything Framework Edition)
  * ==============================================================================
  * Sourced from OTO hardware specs and Airwindows-style DSP primitives.
  * * SIGNAL FLOW:
@@ -18,11 +18,11 @@
 #define M_PI 3.14159265358979323846f
 #endif
 
-class SuperBoum {
+class SuperBoom {
 public:
     // --- PARAMETER STRUCTURE (Maps to 4 Pages on Move) ---
     struct Params {
-        // Page 1: BOUM (Performance)
+        // Page 1: BOOM (Performance)
         float inputGain;   // 0.0 to 4.0 (up to +12dB/18dB)
         float compAmount;  // 0.0 to 1.0 (0.7+ is negative ratio)
         float flavor;      // 0.0 to 7.0 (Filter Matrix Selector)
@@ -108,7 +108,7 @@ public:
         }
     };
 
-    SuperBoum() : seed(12345), env(0.0f), osL(0.0f), osR(0.0f) { reset(); }
+    SuperBoom() : seed(12345), env(0.0f), osL(0.0f), osR(0.0f) { reset(); }
 
     void reset() {
         for (int i = 0; i < 8; ++i) bank[i].reset();

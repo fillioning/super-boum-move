@@ -1,5 +1,5 @@
 /*
- * Super Boum — Chain UI
+ * Super Boom — Chain UI
  *
  * 4-page parameter browser with "hover-to-preview" knob mapping:
  * scrolling the jog to highlight a page immediately maps knobs 1-8
@@ -32,7 +32,7 @@ const KNOB_CC_BASE = 71;
 
 const PAGES = [
     {
-        name: "Boum",
+        name: "Boom",
         params: [
             { key: "inputGain", name: "Input",  min: 0,   max: 4,   step: 0.02, fmt: v => v.toFixed(2) },
             { key: "compAmount",name: "Comp",   min: 0,   max: 1,   step: 0.01, fmt: v => `${(v*100).toFixed(0)}%` },
@@ -158,7 +158,7 @@ function fetchAllParams() {
 
 function drawRootView() {
     clear_screen();
-    drawHeader("Super Boum");
+    drawHeader("Super Boom");
 
     /* Show active page's knob summary below header */
     const activePage = PAGES[selectedPage];
@@ -194,7 +194,7 @@ function drawPageView() {
     clear_screen();
 
     const page = PAGES[selectedPage];
-    drawHeader(`Super Boum: ${page.name}`);
+    drawHeader(`Super Boom: ${page.name}`);
 
     /* Parameter list — show 4 visible params around selection */
     const lh = 11;
